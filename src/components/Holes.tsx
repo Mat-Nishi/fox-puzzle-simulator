@@ -1,46 +1,49 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 interface HolesProps {
-  onTotalChange: (newTotal: number) => void;
+  positions: number[];
+  onUpdatePositions: (newPositions: number[]) => void;
 }
 
-function Holes({ onTotalChange }: HolesProps) {
-  const [positions, setPositions] = useState<number[]>([1, 1, 1, 1, 1]);
-
+function Holes({ positions, onUpdatePositions }: HolesProps) {
   const handleClick = (index: number) => {
-    if (positions[index] > 0) {
-        const newPositions = new Array(5).fill(0);
-        const clickedValue = positions[index];
+    const newPositions = new Array(5).fill(0);
 
-      for (let i=0;i<5;i++){
-        if (i === index){
-            continue
-        }
-        if (i === 0){
-            newPositions[1] += positions[i];
-        }
-        else if(i === positions.length -1){
-            newPositions[positions.length -2] += positions[i]
-        }
-        else{
-            newPositions[i-1] += positions[i];
-            newPositions[i+1] += positions[i];
-        }
+    for (let i = 0; i < 5; i++) {
+      if (i === index) {
+        continue;
       }
-      setPositions(newPositions);
-  
-      const newTotal = newPositions.reduce((acc, cur) => acc + cur, 0);
-      onTotalChange(newTotal);
+      if (i === 0) {
+        newPositions[1] += positions[i];
+      } else if (i === positions.length - 1) {
+        newPositions[positions.length - 2] += positions[i];
+      } else {
+        newPositions[i - 1] += positions[i];
+        newPositions[i + 1] += positions[i];
+      }
+    }
+    onUpdatePositions(newPositions);
+  };
+
+  const handleKeyDown = (index: number, event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleClick(index);
     }
   };
 
   return (
     <div className="grid">
       {positions.map((foxes, index) => (
-        <div key={index} className="hole" onClick={() => handleClick(index)}>
+        <button
+          key={index} // eslint-disable-line
+          type="button"
+          className="hole" 
+          onClick={() => handleClick(index)} 
+          onKeyDown={(event) => handleKeyDown(index, event)}
+        >
           <p>Hole {index + 1}</p>
           <p>Foxes: {foxes}</p>
-        </div>
+        </button>
       ))}
     </div>
   );
