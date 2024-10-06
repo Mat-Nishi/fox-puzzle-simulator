@@ -1,16 +1,24 @@
-import { useEffect } from 'react';
+import { Hole } from "./Hole";
+import '../styles/Holes.css';
 
 interface HolesProps {
   positions: number[];
+  holes: number;
   onUpdatePositions: (newPositions: number[]) => void;
+  onUpdateOdds: (chance: number) => void;
 }
 
-function Holes({ positions, onUpdatePositions }: HolesProps) {
+function Holes({ positions, holes, onUpdatePositions, onUpdateOdds }: HolesProps) {
   const handleClick = (index: number) => {
-    const newPositions = new Array(5).fill(0);
+    const newPositions = new Array(holes).fill(0);
+    let totalFoxes = 0;
+    let foxesFound = 0;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < holes; i++) {
+      totalFoxes += positions[i];
+
       if (i === index) {
+        foxesFound = positions[i];
         continue;
       }
       if (i === 0) {
@@ -23,27 +31,14 @@ function Holes({ positions, onUpdatePositions }: HolesProps) {
       }
     }
     onUpdatePositions(newPositions);
+    onUpdateOdds(foxesFound/totalFoxes);
   };
 
-  const handleKeyDown = (index: number, event: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleClick(index);
-    }
-  };
 
   return (
     <div className="grid">
       {positions.map((foxes, index) => (
-        <button
-          key={index} // eslint-disable-line
-          type="button"
-          className="hole" 
-          onClick={() => handleClick(index)} 
-          onKeyDown={(event) => handleKeyDown(index, event)}
-        >
-          <p>Hole {index + 1}</p>
-          <p>Foxes: {foxes}</p>
-        </button>
+        <Hole index={index} foxes={foxes} handleClick={handleClick}/>
       ))}
     </div>
   );
