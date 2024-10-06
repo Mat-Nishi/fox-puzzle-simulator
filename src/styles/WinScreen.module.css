@@ -42,10 +42,12 @@
   .winScreen button {
     background-color: rgba(100, 100, 100, 0.2);
     backdrop-filter: blur(5px);
-    border: 2px solid white;
+    border: 2px solid var(--purple);
     transition: all ease-in-out 0.2s;
     background-color: transparent;
     border-radius: 8px;
+    color: var(--purple);
+
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
@@ -57,7 +59,7 @@
   
   
   .winScreen button:hover {
-    background-color: rgba(100, 100, 100, 0.6);
+    background-color: rgba(255, 255, 255, 0.25);
     transform: scale(1.05);
   }
   

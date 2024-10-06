@@ -1,0 +1,26 @@
+.warningContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.15); */
+    text-align: center;
+    backdrop-filter: blur(6px);
+    /* color: rgb(88, 0, 88); */
+    color: #000;
+  }
+  
+  .warningContainer h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .warningContainer p {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .warningContainer img{
+    max-width: 45vw;
+  }
