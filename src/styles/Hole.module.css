@@ -1,19 +1,24 @@
 .hole {
+  color: var(--purple);
+  font-weight: bold;
+  font-size: large;
   width: 6.25rem;  
-  height: 6.25rem; 
+  height: 7rem; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /* background-color: gray; */
+  border-radius: 1rem;
   margin: 0 0.625rem; 
   position: relative;
-  overflow: hidden;   
+  overflow: hidden;
 }
 
-.hole:hover {
-  background-color: #ddd;
+.hole button:hover {
+  /* background-color: rgba(0, 0, 0, 0.3 ); */
+  transition: all ease-in-out .2s;
+  transform: scale(1.25);
 }
 
 .hole p {
@@ -24,11 +29,12 @@
   width: 100%;    
   height: 100%;     
   object-fit: cover;  
-  border-radius: 50%; 
 }
 
-button {
+.hole button {
+  transition: all ease-in-out .2s;
   background-color: transparent;
+  /* backdrop-filter: blur(3px); */
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -37,9 +43,5 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding-bottom: 1rem;
 }

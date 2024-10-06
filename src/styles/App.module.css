@@ -11,6 +11,13 @@ body{
   justify-content: center;
 }
 
+.gameContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .title {
   text-align: center;
   font-size: 2rem;

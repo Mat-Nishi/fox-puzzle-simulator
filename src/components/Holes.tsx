@@ -1,5 +1,5 @@
 import { Hole } from "./Hole";
-import '../styles/Holes.css';
+import styles from '../styles/Holes.module.css';
 
 interface HolesProps {
   positions: number[];
@@ -36,12 +36,20 @@ function Holes({ positions, holes, onUpdatePositions, onUpdateOdds }: HolesProps
 
 
   return (
-    <div className="grid">
-      {positions.map((foxes, index) => (
-        <Hole index={index} foxes={foxes} handleClick={handleClick}/>
-      ))}
+    <div className={styles.grid}>
+        {positions.map((foxes, index) => {
+            const id = index;
+            return (
+                <Hole 
+                    key={`hole-${id}`}
+                    index={id}
+                    foxes={foxes} 
+                    handleClick={handleClick} 
+                />
+            );
+        })}
     </div>
-  );
+);
 }
 
 export default Holes;

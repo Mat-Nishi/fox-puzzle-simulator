@@ -1,4 +1,4 @@
-import '../styles/GameInfo.css';
+import styles from '../styles/GameInfo.module.css';
 
 interface GameInfoProps {
     movesMade: number;
@@ -10,7 +10,7 @@ interface GameInfoProps {
   export function GameInfo({ movesMade, runningChance }: GameInfoProps) {
     console.log(runningChance);
     return (
-      <div className="game-info">
+      <div className={styles.gameInfo}>
         <h2>Game Information</h2>
         <p>Moves Made: {movesMade}</p>
         {runningChance === 1 || runningChance < 0.9999? 

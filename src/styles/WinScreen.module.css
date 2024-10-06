@@ -1,0 +1,63 @@
+@keyframes rotateBackAndForth {
+    0% {
+      transform: rotate(5deg);
+    }
+    50%{
+        transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+
+  }
+
+  @keyframes upAndDown {
+    0%{
+        transform: translateY(5px);
+    }
+    50%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateY(5px);
+    }
+  }
+  
+  .sine{
+    animation: upAndDown 3s infinite;
+  }
+
+  .winScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .winScreen h1 {
+    animation: rotateBackAndForth ease-in-out 3s infinite;
+    font-size: 3rem;
+  }
+  
+  .winScreen button {
+    background-color: rgba(100, 100, 100, 0.2);
+    backdrop-filter: blur(5px);
+    border: 2px solid white;
+    transition: all ease-in-out 0.2s;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    padding-bottom: 1rem;
+  }
+  
+  
+  .winScreen button:hover {
+    background-color: rgba(100, 100, 100, 0.6);
+    transform: scale(1.05);
+  }
+  

@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import './styles/App.css';
+import styles from './styles/App.module.css';
+import './styles/index.css';
 import Holes from './components/Holes';
 import { GameInfo } from './components/GameInfo';
+import { WinScreen } from './components/WinScreen';
 
 function App() {
   const holes=5;
@@ -10,8 +12,14 @@ function App() {
   const [foxesFound, setFoxesFound] = useState<number>(0);
   const [runningChance, setRunningChance] = useState<number>(0);
 
-  const updatePositions = (newPositions: number[]) => {
+  const resetGame = () => {
+    setRunningChance(0);
+    setFoxesFound(0);
+    setMovesMade(0);
+    setPositions(new Array(holes).fill(1));
+  }
 
+  const updatePositions = (newPositions: number[]) => {
     setPositions(newPositions);
     setMovesMade(movesMade + 1);
     const newFoxesFound = newPositions.reduce((acc, cur) => acc + (cur === 0 ? 1 : 0), 0);
@@ -25,10 +33,17 @@ function App() {
   const totalFoxesLeft = positions.reduce((acc, cur) => acc + cur, 0);
 
   return (
-    <div className='appContainer'>
-      <h1 className='title'>Fox Puzzle Game</h1>
-      <Holes positions={positions} holes={holes} onUpdatePositions={updatePositions} onUpdateOdds = {updateOdds} />
-      <GameInfo movesMade={movesMade} foxesLeft={totalFoxesLeft} foxesFound={foxesFound} runningChance={runningChance}/>
+    <div className={styles.appContainer}>
+      {
+        runningChance < 1 ?
+        <div className={styles.gameContainer}>
+          <h1 className={styles.title}>Fox Puzzle Game</h1>
+          <Holes positions={positions} holes={holes} onUpdatePositions={updatePositions} onUpdateOdds = {updateOdds} />
+          <GameInfo movesMade={movesMade} foxesLeft={totalFoxesLeft} foxesFound={foxesFound} runningChance={runningChance}/>
+        </div>
+      :
+      <WinScreen reset={resetGame}/>
+      }
     </div>
   );
 }
