@@ -1,50 +1,78 @@
-# React + TypeScript + Vite
+# 🦊 Fox in the Hole Puzzle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app is a simulator for the **Fox in the Hole** logic puzzle. The goal is to catch a hidden fox that moves around the holes after each guess. Your task is to find the smallest sequence of moves that guarantees finding the fox. The app simulates all possible games, so even if there is one possible game where the fox could avoid being found, you lose!
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Game Interface**: Click on holes to guess where the fox is hiding.
+- **Fox Movement**: If the fox is not found, it moves to an adjacent hole after each guess.
+- **Game Simulation**: The app simulates all possible games based on your moves.
+- **Win Condition**: You win when your sequence of moves guarantees finding the fox in every possible game.
+- **Dynamic Game Info**: Track your guesses, foxes found, and the chances of success.
+- **Rules Modal**: Displays the rules of the game in an easy-to-read format.
 
-## Expanding the ESLint configuration
+## 🎮 How to Play
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Objective**: Find the hidden fox by selecting a hole on each move.
+- **Rules**:
+    - The game simulates a logic puzzle where a fox hides in one of the holes, and your goal is to find the fox by selecting a hole in each move.
+    - If you don’t find the fox, it moves to an adjacent hole after each guess.
+    - The app simulates all possible games where the fox could be hiding, so the game continues if there’s even one possible game where the fox could avoid being found with your sequence of moves.
+    - You win if your sequence guarantees finding the fox in every possible game.
+- **Challenge**: Try to find the shortest sequence of moves that guarantees finding the fox!
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Installation and Setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+- **Node.js** (v16.x or later)
+- **npm** (v7.x or later)
+
+### Step-by-Step Guide
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/fox-in-the-hole.git
+    cd fox-in-the-hole
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and go to:
+    ```
+    http://localhost:3000
+    ```
+
+## 🌐 Access the App
+
+You can access the deployed version of the Fox in the Hole Puzzle app at the following link:
+
+- [Fox in the Hole Puzzle](https://your-username.github.io/fox-in-the-hole/)
+
+## 📚 Tech Stack
+
+- **Frontend**: React, TypeScript, CSS Modules, Tailwind CSS
+- **Backend**: (None, this is a frontend-only app)
+- **Build Tool**: Vite
+
+## 📦 Project Structure
+
+```bash
+├── src
+│   ├── assets          # Images and static assets
+│   ├── components      # React components like Holes, Header, RulesScreen
+│   ├── styles          # CSS Modules and general styles
+│   └── App.tsx         # Main application component
+├── README.md           # This file
+└── package.json        # App dependencies and scripts
 ```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Enjoy the challenge of outsmarting the fox! 🦊
