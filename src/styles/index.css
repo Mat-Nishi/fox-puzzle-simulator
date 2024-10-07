@@ -1,12 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
-  --purple: #3e0071a3;
+  --purple: #480083;
+  /* --foxOrange: #d56824; */
+  --foxOrange: #ffa30f;
+  --bg-purple: rgba(0, 0, 0, 0.5);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--purple);
+  color: var(--foxOrange);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,22 +25,23 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 500px;
   min-height: 100vh;
 
   background-image: url('../assets/bg_fox.png');
+  /* background-color: antiquewhite; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .loader {
-  border: 8px solid rgba(255, 255, 255, 0.3); /* Light border */
-  border-top: 8px solid white; /* Spinning color */
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid white;
   border-radius: 50%;
-  width: 50px; /* Size of the spinner */
-  height: 50px; /* Size of the spinner */
-  animation: spin 1s linear infinite; /* Spin animation */
+  width: 50px; 
+  height: 50px;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

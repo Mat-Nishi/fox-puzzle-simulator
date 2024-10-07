@@ -1,0 +1,40 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* padding: 0 1rem; */
+    background-color: var(--bg-purple);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.header h1{
+    margin: 0.5rem 0 0.5rem 1rem;
+}
+
+.header .buttons{
+    margin-right: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.header .buttons button{
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: transparent;
+    font-size: larger;
+    color: var(--foxOrange);
+    font-weight: 700;
+    border: 1px solid var(--foxOrange);
+    border-radius: 8px;
+}
+
+.header .buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+  }
+  

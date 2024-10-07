@@ -1,5 +1,5 @@
 .hole {
-  color: var(--purple);
+  color: var(--foxOrange);
   font-weight: bold;
   font-size: large;
   width: 6.25rem;  
@@ -10,16 +10,20 @@
   align-items: center;
   cursor: pointer;
   border-radius: 1rem;
-  margin: 0 0.625rem; 
+  margin: 0 1%; 
   position: relative;
   overflow: hidden;
+}
+
+.bg{
+  /* backdrop-filter: blur(5px); */
+  min-width: 6.25rem;
 }
 
 .hole button:hover {
   /* background-color: rgba(0, 0, 0, 0.3 ); */
   transition: all ease-in-out .2s;
   transform: scale(1.25);
-  border-radius: 8px;
 }
 
 .hole p {
@@ -29,7 +33,8 @@
 .hole img {
   width: 100%;    
   height: 100%;     
-  object-fit: cover;  
+  object-fit: contain;
+  display: block;  
 }
 
 .hole button {

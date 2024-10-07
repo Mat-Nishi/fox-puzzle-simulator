@@ -2,12 +2,13 @@ import holeImage from '../assets/hole.svg';
 import styles from '../styles/Hole.module.css'
 
 interface HoleProps{
+    showPercent: boolean;
     index: number;
-    foxes: number;
+    odds: number;
     handleClick: (index: number) => void;
 }
 
-export function Hole({ index, foxes, handleClick }: HoleProps){
+export function Hole({ showPercent, index, odds, handleClick }: HoleProps){
     const handleKeyDown = (index: number, event: React.KeyboardEvent<HTMLButtonElement>) => {
         if (event.key === 'Enter' || event.key === ' ') {
           handleClick(index);
@@ -15,7 +16,7 @@ export function Hole({ index, foxes, handleClick }: HoleProps){
       };
 
     return(
-        <div className={styles.hole}>
+        <div className={`${styles.hole} ${styles.bg}`}>
             <button
                 key={index}
                 type="button"
@@ -26,8 +27,8 @@ export function Hole({ index, foxes, handleClick }: HoleProps){
                 <img className={styles.hole} src={holeImage} alt="Icon of a hole on the ground" />
                     <p>Hole {index + 1}</p> 
                     {
-                        false && //TODO option to see # foxes
-                        <p>Foxes: {foxes}</p> 
+                        showPercent &&
+                        <p>{odds.toFixed(2)}%</p> 
                     }
             </button>
         </div>

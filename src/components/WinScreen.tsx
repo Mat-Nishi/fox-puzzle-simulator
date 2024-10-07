@@ -6,7 +6,7 @@ interface winScreenProps{
 
 export function WinScreen({reset}: winScreenProps){
     return(
-        <div className={styles.winScreen}>
+        <div className={`${styles.winScreen} ${styles.blur}`}>
             <div className={styles.sine}>
                 <h1 className={styles.winScreen}>You found the fox!</h1>
             </div>
