@@ -54,7 +54,7 @@ This app is a simulator for the **Fox in the Hole** logic puzzle. The goal is to
 
 You can access the deployed version of the Fox in the Hole Puzzle app at the following link:
 
-- [Fox in the Hole Puzzle](https://mat-nishi.github.io/fox-in-the-hole/)
+- [Fox in the Hole Puzzle](https://mat-nishi.github.io/fox-puzzle-simulator/)
 
 ## 📚 Tech Stack
 
