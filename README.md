@@ -1,6 +1,6 @@
 # 🦊 Fox in the Hole Puzzle
 
-This app is a simulator for the **Fox in the Hole** logic puzzle. The goal is to catch a hidden fox that moves around the holes after each guess. Your task is to find the smallest sequence of moves that guarantees finding the fox. The app simulates all possible games, so even if there is one possible game where the fox could avoid being found, you lose!
+This app is a simulator for the **Fox in the Hole** logic puzzle. The goal is to catch a hidden fox that moves around the holes after each guess. Your task is to find the smallest sequence of moves that guarantees finding the fox. The app simulates all possible games, so even if there is one possible game where the fox could avoid being found, the game goes on!
 
 ## 🚀 Features
 
@@ -31,7 +31,7 @@ This app is a simulator for the **Fox in the Hole** logic puzzle. The goal is to
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/fox-in-the-hole.git
+    git clone https://github.com/Mat-Nishi/fox-in-the-hole.git
     cd fox-in-the-hole
     ```
 
@@ -54,12 +54,11 @@ This app is a simulator for the **Fox in the Hole** logic puzzle. The goal is to
 
 You can access the deployed version of the Fox in the Hole Puzzle app at the following link:
 
-- [Fox in the Hole Puzzle](https://your-username.github.io/fox-in-the-hole/)
+- [Fox in the Hole Puzzle](https://mat-nishi.github.io/fox-in-the-hole/)
 
 ## 📚 Tech Stack
 
-- **Frontend**: React, TypeScript, CSS Modules, Tailwind CSS
-- **Backend**: (None, this is a frontend-only app)
+- **Frontend**: React, TypeScript, CSS Modules,
 - **Build Tool**: Vite
 
 ## 📦 Project Structure
