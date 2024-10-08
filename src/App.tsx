@@ -30,7 +30,7 @@ function App() {
   const [rulesScreen, setRulesScreen] = useState<boolean>(false);
   const [settingsScreen, setSettingsScreen] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>('pt-br');
-  const [bestScore, setBestScore] = useState<number>(Number.NaN);
+  const [bestScore, setBestScore] = useState<number>(10000);
   const [showPercent, setShowPercent] = useState<boolean>(false);
 
   const changeLanguage = (language: string) =>{

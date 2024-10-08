@@ -1,7 +1,7 @@
 import styles from '../styles/GameInfo.module.css';
 
 interface GameInfoProps {
-    bestScore: number | null;
+    bestScore: number;
     movesMade: number;
     foxesLeft: number;
     foxesFound: number;
@@ -22,7 +22,7 @@ interface GameInfoProps {
             ) : (
               <p>Odds of winning: 99.99%</p>
             )}
-            <p>Best score: {!Number.isNaN(bestScore) ? bestScore : 'N/A'}</p>
+            <p>Best score: {!Number.isNaN(bestScore) && bestScore < 1000 ? bestScore : 'N/A'}</p>
           </>
         ) : (
           <>
@@ -33,7 +33,7 @@ interface GameInfoProps {
             ) : (
               <p>Chance de vitória: 99.99%</p>
             )}
-            <p>Melhor pontuação: {!Number.isNaN(bestScore) ? bestScore : 'N/D'}</p>
+            <p>Melhor pontuação: {!Number.isNaN(bestScore) && bestScore < 1000 ? bestScore : 'N/D'}</p>
           </>
         )}
       </div>
