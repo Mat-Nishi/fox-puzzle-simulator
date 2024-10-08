@@ -2,10 +2,15 @@ import styles from '../styles/WinScreen.module.css'
 
 interface winScreenProps{
     language: string;
+    score: number;
     reset: () => void;
+    changeBestScore: (score:number) => void;
 }
 
-export function WinScreen({language, reset}: winScreenProps){
+export function WinScreen({language, score, reset, changeBestScore}: winScreenProps){
+    console.log(score)
+    changeBestScore(score);
+
     return (
         <div className={`${styles.winScreen} ${styles.blur}`}>
           <div className={styles.sine}>

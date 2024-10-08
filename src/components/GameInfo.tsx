@@ -1,6 +1,7 @@
 import styles from '../styles/GameInfo.module.css';
 
 interface GameInfoProps {
+    bestScore: number | null;
     movesMade: number;
     foxesLeft: number;
     foxesFound: number;
@@ -8,7 +9,8 @@ interface GameInfoProps {
     language: string;
   }
   
-  export function GameInfo({ movesMade, runningChance, language }: GameInfoProps) {
+  export function GameInfo({ bestScore, movesMade, runningChance, language }: GameInfoProps) {
+    // console.log(bestScore)
     return (
       <div className={styles.gameInfo}>
         {language === 'en-us' ? (
@@ -20,6 +22,7 @@ interface GameInfoProps {
             ) : (
               <p>Odds of winning: 99.99%</p>
             )}
+            <p>Best score: {!Number.isNaN(bestScore) ? bestScore : 'N/A'}</p>
           </>
         ) : (
           <>
@@ -30,10 +33,10 @@ interface GameInfoProps {
             ) : (
               <p>Chance de vitória: 99.99%</p>
             )}
+            <p>Melhor pontuação: {!Number.isNaN(bestScore) ? bestScore : 'N/D'}</p>
           </>
         )}
       </div>
     );
-    
   }
   

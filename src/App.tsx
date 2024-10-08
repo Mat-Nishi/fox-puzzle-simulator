@@ -30,7 +30,7 @@ function App() {
   const [rulesScreen, setRulesScreen] = useState<boolean>(false);
   const [settingsScreen, setSettingsScreen] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>('pt-br');
-
+  const [bestScore, setBestScore] = useState<number>(Number.NaN);
   const [showPercent, setShowPercent] = useState<boolean>(false);
 
   const changeLanguage = (language: string) =>{
@@ -47,6 +47,16 @@ function App() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const storedBestScore = localStorage.getItem('bestScore');
+    console.log("buscando: ", storedBestScore)
+    setBestScore(Number(storedBestScore));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('bestScore', String(bestScore));
+  }, [bestScore]);
 
   useEffect(() => {
     preloadImage(backgroundImageUrl)
@@ -66,6 +76,12 @@ function App() {
     setMovesMade(0);
     setPositions(new Array(holes).fill(1));
   };
+
+  const newBestScore = (score: number) => {
+    if (Number.isNaN(bestScore) || score < bestScore){
+      setBestScore(score);
+    }
+  }
 
   const updatePositions = (newPositions: number[]) => {
     setPositions(newPositions);
@@ -129,6 +145,7 @@ function App() {
                         />
                       </div>
                       <GameInfo
+                        bestScore={bestScore}
                         language={language}
                         movesMade={movesMade}
                         foxesLeft={totalFoxesLeft}
@@ -139,7 +156,7 @@ function App() {
                   </div>
                 ) : (
                   <div>
-                    <WinScreen language={language} reset={resetGame} />
+                    <WinScreen language={language} score={movesMade} reset={resetGame} changeBestScore={newBestScore}/>
                   </div>
                 )
               ) : (
