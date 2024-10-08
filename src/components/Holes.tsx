@@ -5,11 +5,12 @@ interface HolesProps {
   showPercent: boolean;
   positions: number[];
   holes: number;
+  language: string;
   onUpdatePositions: (newPositions: number[]) => void;
   onUpdateOdds: (chance: number) => void;
 }
 
-function Holes({ showPercent, positions, holes, onUpdatePositions, onUpdateOdds }: HolesProps) {
+function Holes({ showPercent, positions, holes, language, onUpdatePositions, onUpdateOdds }: HolesProps) {
   const handleClick = (index: number) => {
     const newPositions = new Array(holes).fill(0);
     let totalFoxes = 0;
@@ -61,6 +62,7 @@ function Holes({ showPercent, positions, holes, onUpdatePositions, onUpdateOdds 
                     key={`hole-${id}`}
                     index={id}
                     odds={chance}
+                    language={language}
                     handleClick={handleClick} 
                 />
             );

@@ -29,8 +29,13 @@ function App() {
   const [isPortrait, setIsPortrait] = useState<boolean>(window.innerHeight > window.innerWidth);
   const [rulesScreen, setRulesScreen] = useState<boolean>(false);
   const [settingsScreen, setSettingsScreen] = useState<boolean>(false);
+  const [language, setLanguage] = useState<string>('pt-br');
 
   const [showPercent, setShowPercent] = useState<boolean>(false);
+
+  const changeLanguage = (language: string) =>{
+    setLanguage(language);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -98,42 +103,63 @@ function App() {
         <div className={styles.loader} />
       ) : (
         isPortrait ? (
-          <RotateWarning />
+          <RotateWarning language={language} />
         ) : (
-          !settingsScreen ? (
+          <>
+            <Header language={language} settingsButton={openSettings} rulesButton={openRules} />
+            {!settingsScreen ? (
               !rulesScreen ? (
-                  runningChance < 1 ? (
-                    <div  className={styles.appContainer}>
-                      <Header settingsButton={openSettings} rulesButton={openRules}/>
-                      <div className={styles.gameContainer}>
-                        <p className={styles.title}>Click on the hole to find the fox</p>
-                        <Holes showPercent={showPercent}
-                               positions={positions} 
-                               holes={holes} 
-                               onUpdatePositions={updatePositions} 
-                               onUpdateOdds={updateOdds} />
-                        <GameInfo movesMade={movesMade}
-                                  foxesLeft={totalFoxesLeft} 
-                                  foxesFound={foxesFound} 
-                                  runningChance={runningChance} />
+                runningChance < 1 ? (
+                  <div className={styles.appContainer}>
+                    <div className={styles.gameContainer}>
+                      <div className={styles.titleHolesWrapper}>
+                        {language === 'en-us' ? (
+                          <p className={styles.title}>Click on the hole to find the fox</p>
+                        ) : (
+                          <p className={styles.title}>Clique na toca para procurar a raposa</p>
+                        )}
+  
+                        <Holes
+                          language={language}
+                          showPercent={showPercent}
+                          positions={positions}
+                          holes={holes}
+                          onUpdatePositions={updatePositions}
+                          onUpdateOdds={updateOdds}
+                        />
                       </div>
+                      <GameInfo
+                        language={language}
+                        movesMade={movesMade}
+                        foxesLeft={totalFoxesLeft}
+                        foxesFound={foxesFound}
+                        runningChance={runningChance}
+                      />
                     </div>
-                  ) : (
-                    <div>
-                      <Header settingsButton={openSettings} rulesButton={openRules}/>
-                      <WinScreen reset={resetGame} />
-                    </div>
-                  )
-                )  : (
-                  <RulesScreen onClose={closeModal}/>
-                )   
-          ) : (
-            <SettingsScreen showPercent={showPercent} toggleShowPercent={toggleShowPercent} onClose={closeModal}/>
-          )
+                  </div>
+                ) : (
+                  <div>
+                    <WinScreen language={language} reset={resetGame} />
+                  </div>
+                )
+              ) : (
+                <RulesScreen language={language} onClose={closeModal} />
+              )
+            ) : (
+              <SettingsScreen
+                language={language}
+                showPercent={showPercent}
+                toggleShowPercent={toggleShowPercent}
+                changeLanguage={changeLanguage}
+                onClose={closeModal}
+              />
+            )}
+          </>
         )
       )}
     </div>
   );
+  
 }
 
 export default App;

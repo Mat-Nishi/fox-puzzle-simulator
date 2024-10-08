@@ -5,7 +5,8 @@
 :root {
   --purple: #480083;
   /* --foxOrange: #d56824; */
-  --foxOrange: #ffa30f;
+  /* --foxOrange: #ffa30f; */
+  --foxOrange: #dbdbdb;
   --bg-purple: rgba(0, 0, 0, 0.5);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -22,11 +23,14 @@
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
   min-width: 500px;
   min-height: 100vh;
+  width: 100vw;
 
   background-image: url('../assets/bg_fox.png');
   /* background-color: antiquewhite; */

@@ -5,10 +5,11 @@ interface HoleProps{
     showPercent: boolean;
     index: number;
     odds: number;
+    language: string;
     handleClick: (index: number) => void;
 }
 
-export function Hole({ showPercent, index, odds, handleClick }: HoleProps){
+export function Hole({ showPercent, index, odds, language, handleClick }: HoleProps){
     const handleKeyDown = (index: number, event: React.KeyboardEvent<HTMLButtonElement>) => {
         if (event.key === 'Enter' || event.key === ' ') {
           handleClick(index);
@@ -25,7 +26,9 @@ export function Hole({ showPercent, index, odds, handleClick }: HoleProps){
                 onKeyDown={(event) => handleKeyDown(index, event)}
                 >
                 <img className={styles.hole} src={holeImage} alt="Icon of a hole on the ground" />
-                    <p>Hole {index + 1}</p> 
+                    {language === 'en-us' ? 
+                        <p>Hole {index + 1}</p> :
+                        <p>Toca {index + 1}</p>}
                     {
                         showPercent &&
                         <p>{odds.toFixed(2)}%</p> 
