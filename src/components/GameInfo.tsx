@@ -22,7 +22,7 @@ interface GameInfoProps {
             ) : (
               <p>Odds of winning: 99.99%</p>
             )}
-            <p>Best score: {!Number.isNaN(bestScore) && bestScore < 1000 ? bestScore : 'N/A'}</p>
+            <p>Best score: {!Number.isNaN(bestScore) && bestScore < 1000 && bestScore > 5 ? bestScore : 'N/A'}</p>
           </>
         ) : (
           <>
@@ -33,7 +33,7 @@ interface GameInfoProps {
             ) : (
               <p>Chance de vitória: 99.99%</p>
             )}
-            <p>Melhor pontuação: {!Number.isNaN(bestScore) && bestScore < 1000 ? bestScore : 'N/D'}</p>
+            <p>Melhor pontuação: {!Number.isNaN(bestScore) && bestScore < 1000 && bestScore > 5 ? bestScore : 'N/D'}</p>
           </>
         )}
       </div>
